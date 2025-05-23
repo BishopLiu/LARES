@@ -1,0 +1,25 @@
+seed: 2025
+data_path: './dataset'
+MAX_ITEM_LIST_LENGTH: 20
+save_dataset: True
+benchmark_filename: [train, valid, test]
+alias_of_item_id: [item_id_list]
+load_col:
+  inter: [user_id, item_id_list, item_id]
+train_neg_sample_args: ~
+
+topk: [5, 10, 20, 50, 100]
+metrics: [Recall, NDCG]
+valid_metric: NDCG@10
+stopping_step: 10
+
+train_stage: 'RL'
+k: 10
+beta: 0.1
+group_num: 8
+
+train_batch_size: 400
+eval_batch_size: 10240
+
+pretrain_model_path: './saved/LARES-SL-Instruments.pth'
+data_filter: True

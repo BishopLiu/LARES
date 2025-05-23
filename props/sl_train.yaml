@@ -1,0 +1,25 @@
+seed: 2025
+data_path: './dataset'
+MAX_ITEM_LIST_LENGTH: 20
+save_dataset: True
+worker: 6
+benchmark_filename: [train, valid, test]
+alias_of_item_id: [item_id_list]
+load_col:
+  inter: [user_id, item_id_list, item_id]
+train_neg_sample_args: ~
+
+topk: [5, 10, 20, 50]
+metrics: [Recall, NDCG]
+valid_metric: NDCG@10
+stopping_step: 10
+
+train_stage: 'SL'
+train_batch_size: 1024
+eval_batch_size: 4096
+
+tau: 0.07
+alpha: 0.1
+gamma: 0.1
+sem_func: 'cos'  # [cos, dot]
+same_step: True
