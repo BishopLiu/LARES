@@ -35,9 +35,7 @@ def main(d, m, **kwargs):
     train_dataset, valid_dataset, test_dataset = built_datasets
 
     if config['data_filter']:
-        selected_idx = set()
-        for lel in config['data_level']:
-            selected_idx.update(json.load(open(os.path.join(dataset.dataset_path, f"{d}.{m}.train.{lel}.json"), "r")))
+        selected_idx = json.load(open(os.path.join(dataset.dataset_path, f"{d}.{m}.select_idx.json"), "r"))
         selected_idx = sorted(list(selected_idx))
         selected_train_dataset = train_dataset.copy(train_dataset.inter_feat[selected_idx])
         train_data = TrainDataLoader(config, selected_train_dataset, None, shuffle=True)
